@@ -1,0 +1,25 @@
+# SPA Routing Redirects
+# Este arquivo garante que todas as rotas sejam tratadas corretamente em modo estático
+
+# Home
+/index.html          /   200
+
+# Páginas principais
+/cardapio.html       /cardapio   200
+/agendar.html        /agendar    200
+/checkout.html       /checkout   200
+/login-admin.html    /login-admin 200
+/admin.html          /admin      200
+/order-confirmation.html  /order-confirmation  200
+/instrucoes.html     /instrucoes 200
+
+# Páginas de teste
+/test-checkout.html  /test-checkout  200
+/test-notifications.html  /test-notifications  200
+/simple-test.html    /simple-test    200
+
+# Redirecionamento de admin para login
+/admin/*             /login-admin.html   302
+
+# Tratamento de rotas não encontradas
+/*                   /index.html        404

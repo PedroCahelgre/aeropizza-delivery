@@ -1,0 +1,48 @@
+{
+  "version": 3,
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/cardapio",
+      "dest": "/cardapio.html"
+    },
+    {
+      "src": "/agendar",
+      "dest": "/agendar.html"
+    },
+    {
+      "src": "/checkout",
+      "dest": "/checkout.html"
+    },
+    {
+      "src": "/login-admin",
+      "dest": "/login-admin.html"
+    },
+    {
+      "src": "/admin",
+      "dest": "/login-admin.html",
+      "status": 302
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "/login-admin.html",
+      "status": 302
+    },
+    {
+      "src": "/order-confirmation",
+      "dest": "/order-confirmation.html"
+    },
+    {
+      "src": "/instrucoes",
+      "dest": "/instrucoes.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "status": 404
+    }
+  ]
+}
