@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" 
+     width="32" height="32" viewBox="0 0 1024 1024" xml:space="preserve">
+  <defs>
+    <style>
+      .logo-bg { fill: #000000; stroke: #eab308; stroke-width: 15; }
+      .logo-text { fill: #eab308; font-family: Arial Black, sans-serif; font-weight: 900; text-anchor: middle; }
+      .delivery-text { font-size: 50px; }
+      .aeropizza-text { font-size: 100px; }
+      .desde-text { font-size: 35px; }
+    </style>
+  </defs>
+  <circle class="logo-bg" cx="512" cy="512" r="480"/>
+  <text class="logo-text delivery-text" x="512" y="250">DELIVERY</text>
+  <text class="logo-text aeropizza-text" x="512" y="510">AERO</text>
+  <text class="logo-text aeropizza-text" x="512" y="620">PIZZA</text>
+  <text class="logo-text desde-text" x="512" y="780">DESDE 2010</text>
+  <!-- Pizza slice -->
+  <path fill="#eab308" d="M 200 420 L 240 500 L 280 460 Z"/>
+  <!-- Small airplane -->
+  <path fill="#eab308" d="M 740 480 L 780 470 L 790 490 L 750 500 Z"/>
+</svg>

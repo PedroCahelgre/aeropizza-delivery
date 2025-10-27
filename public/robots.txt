@@ -1,14 +1,28 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# Robots.txt para AeroPizza
+# Otimizado para SEO e motores de busca
 
 User-agent: *
 Allow: /
+
+# Priorizar páginas importantes
+Allow: /cardapio
+Allow: /agendar
+Allow: /checkout
+Allow: /
+
+# Bloquear páginas de admin e teste
+Disallow: /admin
+Disallow: /login-admin
+Disallow: /test-*
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Sitemap
+Sitemap: https://seu-dominio.netlify.app/sitemap.xml
+
+# Tempo de crawl (1 segundo entre requisições)
+Crawl-delay: 1
+
+# Host (para SEO local)
+Host: https://seu-dominio.netlify.app
