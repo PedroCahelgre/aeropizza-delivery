@@ -72,7 +72,10 @@ import {
   BarChart
 } from 'lucide-react'
 import OrderStatusManager from '@/components/OrderStatusManager'
+<<<<<<< HEAD
 import OrderManagement from '@/components/admin/OrderManagement'
+=======
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
 import SoundControl from '@/components/admin/SoundControl'
 import CustomerManagement from '@/components/admin/CustomerManagementEnhanced'
@@ -402,7 +405,62 @@ export default function AdminPage() {
               </TabsContent>
 
               <TabsContent value="orders" className="space-y-6">
+<<<<<<< HEAD
                 <OrderManagement />
+=======
+                {/* Estatísticas de Pedidos */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <Card className="bg-gray-900/60 border-gray-700 text-white">
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-gray-400">Pendentes</p>
+                          <p className="text-2xl font-bold text-yellow-500">3</p>
+                        </div>
+                        <Clock className="w-8 h-8 text-yellow-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gray-900/60 border-gray-700 text-white">
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-gray-400">Confirmados</p>
+                          <p className="text-2xl font-bold text-blue-500">5</p>
+                        </div>
+                        <CheckCircle className="w-8 h-8 text-blue-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gray-900/60 border-gray-700 text-white">
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-gray-400">Em Entrega</p>
+                          <p className="text-2xl font-bold text-purple-500">2</p>
+                        </div>
+                        <Truck className="w-8 h-8 text-purple-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-gray-900/60 border-gray-700 text-white">
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-gray-400">Entregues</p>
+                          <p className="text-2xl font-bold text-green-500">12</p>
+                        </div>
+                        <Package className="w-8 h-8 text-green-500" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                
+                <OrderStatusManager />
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
               </TabsContent>
 
               <TabsContent value="customers" className="space-y-6">

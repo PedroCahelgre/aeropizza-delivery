@@ -7,9 +7,17 @@ import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { 
+<<<<<<< HEAD
   Clock, 
   Search, 
   Filter,
+=======
+  ShoppingCart, 
+  Clock, 
+  Search, 
+  Filter,
+  Plus,
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   Star,
   MapPin,
   Phone,
@@ -17,6 +25,12 @@ import {
   Home
 } from 'lucide-react'
 import Link from 'next/link'
+<<<<<<< HEAD
+=======
+import { useCart } from '@/hooks/useCart'
+import { useToast } from '@/hooks/use-toast'
+import { Toaster } from '@/components/ui/toaster'
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
 interface Product {
   id: string
@@ -45,6 +59,11 @@ export default function CardapioPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [showAvailableOnly, setShowAvailableOnly] = useState(true)
+<<<<<<< HEAD
+=======
+  const { addToCart, getCartCount } = useCart()
+  const { toast } = useToast()
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
   useEffect(() => {
     setMounted(true)
@@ -90,6 +109,17 @@ export default function CardapioPage() {
     }
   }
 
+<<<<<<< HEAD
+=======
+  const handleAddToCart = (product: Product) => {
+    addToCart(product)
+    toast({
+      title: "Sucesso!",
+      description: `${product.name} adicionado ao carrinho!`,
+    })
+  }
+
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          product.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -124,8 +154,17 @@ export default function CardapioPage() {
             </Link>
             
             <div className="flex items-center space-x-4">
+<<<<<<< HEAD
               <Link href="/agendar" className="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
                 Fazer Pedido
+=======
+              <Link href="/agendar" className="text-gray-600 hover:text-gray-900">
+                ← Fazer Pedido
+              </Link>
+              <Link href="/agendar" className="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+                <ShoppingCart className="w-4 h-4 inline mr-2" />
+                Carrinho ({getCartCount()})
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
               </Link>
             </div>
           </div>
@@ -245,9 +284,15 @@ export default function CardapioPage() {
                   </div>
                 </div>
                 
+<<<<<<< HEAD
                 {/* Order Button */}
                 <Button
                   onClick={() => window.location.href = '/agendar'}
+=======
+                {/* Add to Cart Button */}
+                <Button
+                  onClick={() => handleAddToCart(product)}
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
                   disabled={!product.available}
                   className={`w-full ${
                     product.available
@@ -255,7 +300,12 @@ export default function CardapioPage() {
                       : "bg-gray-300 text-gray-500 cursor-not-allowed"
                   }`}
                 >
+<<<<<<< HEAD
                   {product.available ? "Pedir" : "Indisponível"}
+=======
+                  <Plus className="w-4 h-4 mr-2" />
+                  {product.available ? "Adicionar" : "Indisponível"}
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
                 </Button>
               </CardContent>
             </Card>
@@ -264,7 +314,11 @@ export default function CardapioPage() {
           {filteredProducts.length === 0 && (
             <div className="col-span-full text-center py-16">
               <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+<<<<<<< HEAD
                 <span className="text-4xl">🍕</span>
+=======
+                <ShoppingCart className="w-12 h-12 text-gray-400" />
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Nenhum produto encontrado</h3>
               <p className="text-gray-600">Tente ajustar os filtros ou buscar por outro termo</p>
@@ -272,6 +326,11 @@ export default function CardapioPage() {
           )}
         </div>
       </div>
+<<<<<<< HEAD
+=======
+
+      <Toaster />
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
     </div>
   )
 }

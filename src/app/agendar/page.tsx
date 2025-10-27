@@ -14,6 +14,10 @@ import {
   Phone
 } from 'lucide-react'
 import Link from 'next/link'
+<<<<<<< HEAD
+=======
+import { useCart } from '@/hooks/useCart'
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 import { useToast } from '@/hooks/use-toast'
 import { getStaticProducts } from '@/lib/static-utils'
 import { Toaster } from '@/components/ui/toaster'
@@ -37,8 +41,13 @@ export default function AgendarPage() {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [loading, setLoading] = useState(true)
+<<<<<<< HEAD
   const [cartItems, setCartItems] = useState<any[]>([])
   
+=======
+  
+  const { cart, addToCart, getTotalPrice, getCartCount } = useCart()
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   const { toast } = useToast()
 
   useEffect(() => {
@@ -49,6 +58,7 @@ export default function AgendarPage() {
     filterProducts()
   }, [products, selectedCategory])
 
+<<<<<<< HEAD
   const fetchProducts = async () => {
     try {
       console.log('🔄 Carregando produtos...')
@@ -69,6 +79,16 @@ export default function AgendarPage() {
       const staticData = getStaticProducts()
       const availableProducts = staticData.filter((p: Product) => p.available)
       setProducts(availableProducts)
+=======
+  const fetchProducts = () => {
+    try {
+      // Usar dados estáticos diretamente para evitar erro de API
+      const data = getStaticProducts()
+      setProducts(data.filter((p: Product) => p.available))
+      setLoading(false)
+    } catch (error) {
+      console.error('Error loading products:', error)
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
       setLoading(false)
     }
   }
@@ -82,6 +102,7 @@ export default function AgendarPage() {
   }
 
   const handleAddToCart = (product: Product) => {
+<<<<<<< HEAD
     console.log('🛒 Adicionando produto ao carrinho:', product)
     
     const cartItem = {
@@ -142,6 +163,18 @@ export default function AgendarPage() {
 
   const handleFinalizarPedido = () => {
     if (!cartItems || cartItems.length === 0) {
+=======
+    addToCart(product)
+    toast({
+      title: "Adicionado!",
+      description: `${product.name} foi adicionado ao carrinho`,
+      duration: 2000
+    })
+  }
+
+  const handleFinalizarPedido = () => {
+    if (!cart || cart.length === 0) {
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
       toast({
         title: "Carrinho vazio",
         description: "Adicione itens ao carrinho",
@@ -152,6 +185,7 @@ export default function AgendarPage() {
     router.push('/checkout')
   }
 
+<<<<<<< HEAD
   // Load cart from localStorage on mount and migrate old product IDs
   useEffect(() => {
     try {
@@ -195,10 +229,13 @@ export default function AgendarPage() {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0)
   }
 
+=======
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   const categories = Array.from(new Set(products.map(p => p.category.name)))
   const itemCount = getCartCount()
   const totalPrice = getTotalPrice()
 
+<<<<<<< HEAD
   // Debug information
   useEffect(() => {
     console.log('🛒 Estado atual do carrinho:', cartItems)
@@ -206,6 +243,8 @@ export default function AgendarPage() {
     console.log('💰 Preço total:', totalPrice)
   }, [cartItems, itemCount, totalPrice])
 
+=======
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -353,10 +392,17 @@ export default function AgendarPage() {
                     Seu Carrinho
                   </h3>
                   
+<<<<<<< HEAD
                   {cartItems && cartItems.length > 0 ? (
                     <div>
                       <div className="space-y-3 mb-4 max-h-64 overflow-y-auto">
                         {cartItems.map((item, index) => (
+=======
+                  {cart && cart.length > 0 ? (
+                    <div>
+                      <div className="space-y-3 mb-4 max-h-64 overflow-y-auto">
+                        {cart.map((item, index) => (
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
                           <div key={index} className="flex justify-between items-center">
                             <div className="flex-1">
                               <p className="font-medium text-sm">{item.name}</p>

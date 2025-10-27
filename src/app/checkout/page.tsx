@@ -51,6 +51,7 @@ export default function CheckoutPage() {
           router.push('/agendar')
         } else {
           console.log('✅ Carrinho tem itens:', parsedCart.length)
+<<<<<<< HEAD
           
           // Validate product IDs - ensure they are proper database IDs
           const validCart = parsedCart.filter((item: any) => {
@@ -83,6 +84,8 @@ export default function CheckoutPage() {
               })
             }
           }
+=======
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
         }
       } catch (error) {
         console.error('❌ Erro ao parsear carrinho:', error)
@@ -149,7 +152,10 @@ export default function CheckoutPage() {
       }
 
       const user = await userResponse.json()
+<<<<<<< HEAD
       console.log('👤 Usuário criado/encontrado:', user)
+=======
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
       // Criar pedido
       const orderPayload = {
@@ -167,8 +173,11 @@ export default function CheckoutPage() {
         notes: orderData.notes
       }
 
+<<<<<<< HEAD
       console.log('📦 Enviando pedido:', JSON.stringify(orderPayload, null, 2))
 
+=======
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
       const orderResponse = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

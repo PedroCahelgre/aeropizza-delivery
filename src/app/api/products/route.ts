@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server'
+<<<<<<< HEAD
 import { db } from '@/lib/db'
+=======
+import { getStaticProducts } from '@/lib/static-utils'
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
 export async function GET(request: Request) {
   try {
@@ -17,6 +21,7 @@ export async function GET(request: Request) {
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     }
 
+<<<<<<< HEAD
     // Buscar produtos do banco de dados
     const products = await db.product.findMany({
       include: {
@@ -29,6 +34,10 @@ export async function GET(request: Request) {
         name: 'asc'
       }
     })
+=======
+    // Retornar produtos estáticos
+    const products = getStaticProducts()
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
     
     return NextResponse.json(products, {
       status: 200,

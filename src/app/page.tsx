@@ -7,6 +7,11 @@ import { Badge } from '@/components/ui/badge'
 import { Clock, MapPin, Phone, Star, ShoppingCart, Calendar, Plus } from 'lucide-react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+<<<<<<< HEAD
+=======
+import { FloatingCart } from '@/components/floating-cart'
+import { useCart } from '@/hooks/useCart'
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 import { useStaticProducts } from '@/hooks/useStaticData'
 import { useToast } from '@/hooks/use-toast'
 import { Toaster } from '@/components/ui/toaster'
@@ -24,6 +29,7 @@ interface Product {
 }
 
 export default function Home() {
+<<<<<<< HEAD
   const [currentTime, setCurrentTime] = useState<Date | null>(null)
   const [mounted, setMounted] = useState(false)
   const { products, loading } = useStaticProducts()
@@ -32,6 +38,14 @@ export default function Home() {
   useEffect(() => {
     setMounted(true)
     setCurrentTime(new Date())
+=======
+  const [currentTime, setCurrentTime] = useState(new Date())
+  const { products, loading } = useStaticProducts()
+  const { addToCart, getCartCount } = useCart()
+  const { toast } = useToast()
+
+  useEffect(() => {
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
     const timer = setInterval(() => {
       setCurrentTime(new Date())
     }, 1000)
@@ -39,6 +53,7 @@ export default function Home() {
   }, [])
 
   const handleAddToCartAndRedirect = (product: Product) => {
+<<<<<<< HEAD
     // Add product to cart
     const cartItem = {
       id: product.id,
@@ -85,6 +100,17 @@ export default function Home() {
         variant: "destructive"
       })
     }
+=======
+    addToCart(product)
+    toast({
+      title: "Sucesso!",
+      description: `${product.name} adicionado ao carrinho!`,
+    })
+    // Redirecionar para página de agendamento após um breve delay
+    setTimeout(() => {
+      window.location.href = '/agendar'
+    }, 500)
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   }
 
   return (
@@ -173,6 +199,14 @@ export default function Home() {
                     <span className="flex items-center">
                       <ShoppingCart className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform duration-300" />
                       FAZER PEDIDO
+<<<<<<< HEAD
+=======
+                      {getCartCount() > 0 && (
+                        <span className="ml-2 bg-black text-yellow-400 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
+                          {getCartCount()}
+                        </span>
+                      )}
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
                     </span>
                   </Button>
                 </Link>
@@ -602,6 +636,12 @@ export default function Home() {
       
       {/* Toast Container */}
       <Toaster />
+<<<<<<< HEAD
+=======
+      
+      {/* Floating Cart */}
+      <FloatingCart />
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
     </div>
   )
 }

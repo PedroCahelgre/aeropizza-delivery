@@ -1,0 +1,358 @@
+/* CSS para corrigir problemas de contraste em formulários com tema escuro */
+
+/* Dropdown/Select - Correção principal para opções ilegíveis */
+[data-radix-select-content] {
+  background-color: rgb(17 24 39 / 0.95) !important; /* bg-gray-900/95 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Força o estilo em todos os navegadores */
+div[data-radix-select-content] {
+  background-color: rgb(17 24 39 / 0.95) !important;
+  border-color: rgb(250 204 21 / 0.3) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-radix-select-item] {
+  color: rgb(255 255 255) !important; /* text-white */
+  background-color: transparent !important;
+}
+
+[data-radix-select-item]:hover,
+[data-radix-select-item]:focus,
+[data-radix-select-item][data-highlighted] {
+  background-color: rgb(250 204 21 / 0.2) !important; /* bg-yellow-400/20 */
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+[data-radix-select-item][data-state="checked"] {
+  background-color: rgb(250 204 21 / 0.3) !important; /* bg-yellow-400/30 */
+  color: rgb(0 0 0) !important; /* text-black */
+  font-weight: 600;
+}
+
+/* Select Trigger */
+[data-radix-select-trigger] {
+  background-color: rgb(17 24 39 / 0.6) !important; /* bg-black/60 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+[data-radix-select-trigger]:hover {
+  background-color: rgb(17 24 39 / 0.8) !important; /* bg-black/80 */
+  border-color: rgb(250 204 21 / 0.5) !important; /* border-yellow-400/50 */
+}
+
+[data-radix-select-trigger][data-placeholder] {
+  color: rgb(156 163 175) !important; /* text-gray-400 */
+}
+
+/* Input fields - Correção para todos os tipos */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="date"],
+input[type="time"],
+input:not([type]) {
+  background-color: rgb(17 24 39 / 0.6) !important; /* bg-black/60 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  color: rgb(255 255 255) !important; /* text-white */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input:hover {
+  background-color: rgb(17 24 39 / 0.8) !important; /* bg-black/80 */
+  border-color: rgb(250 204 21 / 0.5) !important; /* border-yellow-400/50 */
+}
+
+input:focus,
+input:focus-visible {
+  background-color: rgb(17 24 39 / 0.8) !important; /* bg-black/80 */
+  border-color: rgb(250 204 21 / 0.6) !important; /* border-yellow-400/60 */
+  box-shadow: 0 0 0 3px rgb(250 204 21 / 0.2) !important; /* ring-yellow-400/20 */
+  outline: none !important;
+}
+
+/* Input placeholders - Correção para todos os navegadores */
+::placeholder,
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder {
+  color: rgb(156 163 175) !important; /* text-gray-400 */
+  opacity: 1 !important;
+}
+
+/* Textarea */
+textarea {
+  background-color: rgb(17 24 39 / 0.6) !important; /* bg-black/60 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  color: rgb(255 255 255) !important; /* text-white */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea:hover {
+  background-color: rgb(17 24 39 / 0.8) !important; /* bg-black/80 */
+  border-color: rgb(250 204 21 / 0.5) !important; /* border-yellow-400/50 */
+}
+
+textarea:focus,
+textarea:focus-visible {
+  background-color: rgb(17 24 39 / 0.8) !important; /* bg-black/80 */
+  border-color: rgb(250 204 21 / 0.6) !important; /* border-yellow-400/60 */
+  box-shadow: 0 0 0 3px rgb(250 204 21 / 0.2) !important; /* ring-yellow-400/20 */
+  outline: none !important;
+}
+
+/* Radio Group */
+[data-radix-radio-group-item] {
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  background-color: rgb(17 24 39 / 0.6) !important; /* bg-black/60 */
+}
+
+[data-radix-radio-group-item]:hover {
+  border-color: rgb(250 204 21 / 0.5) !important; /* border-yellow-400/50 */
+}
+
+[data-radix-radio-group-item][data-state="checked"] {
+  background-color: rgb(250 204 21) !important; /* bg-yellow-400 */
+  border-color: rgb(250 204 21) !important; /* border-yellow-400 */
+}
+
+[data-radix-radio-group-item][data-state="checked"]::after {
+  background-color: rgb(0 0 0) !important; /* bg-black */
+}
+
+/* Checkbox */
+[data-radix-checkbox-item] {
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  background-color: rgb(17 24 39 / 0.6) !important; /* bg-black/60 */
+}
+
+[data-radix-checkbox-item]:hover {
+  border-color: rgb(250 204 21 / 0.5) !important; /* border-yellow-400/50 */
+}
+
+[data-radix-checkbox-item][data-state="checked"] {
+  background-color: rgb(250 204 21) !important; /* bg-yellow-400 */
+  border-color: rgb(250 204 21) !important; /* border-yellow-400 */
+}
+
+/* Dropdown Menu */
+[data-radix-dropdown-menu-content] {
+  background-color: rgb(17 24 39 / 0.95) !important; /* bg-gray-900/95 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-radix-dropdown-menu-item] {
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+[data-radix-dropdown-menu-item]:hover,
+[data-radix-dropdown-menu-item]:focus {
+  background-color: rgb(250 204 21 / 0.2) !important; /* bg-yellow-400/20 */
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+/* Combobox/Command */
+[data-radix-command] {
+  background-color: rgb(17 24 39 / 0.95) !important; /* bg-gray-900/95 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+}
+
+[data-radix-command-item] {
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+[data-radix-command-item][data-selected="true"] {
+  background-color: rgb(250 204 21 / 0.2) !important; /* bg-yellow-400/20 */
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+/* Context Menu */
+[data-radix-context-menu-content] {
+  background-color: rgb(17 24 39 / 0.95) !important; /* bg-gray-900/95 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+}
+
+[data-radix-context-menu-item] {
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+[data-radix-context-menu-item]:hover,
+[data-radix-context-menu-item]:focus {
+  background-color: rgb(250 204 21 / 0.2) !important; /* bg-yellow-400/20 */
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+/* Popover */
+[data-radix-popover-content] {
+  background-color: rgb(17 24 39 / 0.95) !important; /* bg-gray-900/95 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+/* Tooltip */
+[data-radix-tooltip-content] {
+  background-color: rgb(17 24 39 / 0.95) !important; /* bg-gray-900/95 */
+  color: rgb(255 255 255) !important; /* text-white */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+}
+
+/* Dialog/Modal */
+[data-radix-dialog-content] {
+  background-color: rgb(17 24 39 / 0.98) !important; /* bg-gray-900/98 */
+  border-color: rgb(250 204 21 / 0.3) !important; /* border-yellow-400/30 */
+  color: rgb(255 255 255) !important; /* text-white */
+}
+
+/* Scrollbar styling for dropdowns - Melhor compatibilidade */
+[data-radix-select-content]::-webkit-scrollbar,
+[data-radix-dropdown-menu-content]::-webkit-scrollbar,
+[data-radix-command]::-webkit-scrollbar {
+  width: 6px;
+}
+
+[data-radix-select-content]::-webkit-scrollbar-track,
+[data-radix-dropdown-menu-content]::-webkit-scrollbar-track,
+[data-radix-command]::-webkit-scrollbar-track {
+  background: rgb(17 24 39 / 0.5); /* bg-black/50 */
+}
+
+[data-radix-select-content]::-webkit-scrollbar-thumb,
+[data-radix-dropdown-menu-content]::-webkit-scrollbar-thumb,
+[data-radix-command]::-webkit-scrollbar-thumb {
+  background: rgb(250 204 21 / 0.5); /* bg-yellow-400/50 */
+  border-radius: 3px;
+}
+
+[data-radix-select-content]::-webkit-scrollbar-thumb:hover,
+[data-radix-dropdown-menu-content]::-webkit-scrollbar-thumb:hover,
+[data-radix-command]::-webkit-scrollbar-thumb:hover {
+  background: rgb(250 204 21 / 0.7); /* bg-yellow-400/70 */
+}
+
+/* Firefox scrollbar */
+[data-radix-select-content],
+[data-radix-dropdown-menu-content],
+[data-radix-command] {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(250 204 21 / 0.5) rgb(17 24 39 / 0.5);
+}
+
+/* Form validation states */
+input:invalid,
+textarea:invalid {
+  border-color: rgb(239 68 68 / 0.5) !important; /* border-red-500/50 */
+}
+
+input:invalid:focus,
+textarea:invalid:focus {
+  box-shadow: 0 0 0 3px rgb(239 68 68 / 0.2) !important; /* ring-red-500/20 */
+}
+
+/* Disabled states */
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: rgb(17 24 39 / 0.3) !important; /* bg-black/30 */
+  color: rgb(107 114 128) !important; /* text-gray-500 */
+  border-color: rgb(75 85 99 / 0.3) !important; /* border-gray-600/30 */
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  [data-radix-select-content],
+  [data-radix-dropdown-menu-content],
+  [data-radix-command],
+  [data-radix-context-menu-content] {
+    background-color: rgb(0 0 0) !important; /* pure black */
+    border: 2px solid rgb(250 204 21) !important; /* thick yellow border */
+  }
+  
+  [data-radix-select-item],
+  [data-radix-dropdown-menu-item],
+  [data-radix-command-item],
+  [data-radix-context-menu-item] {
+    color: rgb(255 255 255) !important; /* pure white */
+  }
+  
+  input,
+  textarea {
+    background-color: rgb(0 0 0) !important; /* pure black */
+    border: 2px solid rgb(250 204 21) !important; /* thick yellow border */
+    color: rgb(255 255 255) !important; /* pure white */
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  [data-radix-select-content],
+  [data-radix-dropdown-menu-content],
+  [data-radix-command],
+  [data-radix-context-menu-content] {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Força estilos em classes específicas do shadcn/ui */
+.bg-black\/60 {
+  background-color: rgb(17 24 39 / 0.6) !important;
+}
+
+.border-yellow-400\/30 {
+  border-color: rgb(250 204 21 / 0.3) !important;
+}
+
+.text-white {
+  color: rgb(255 255 255) !important;
+}
+
+/* Correção específica para SelectContent */
+.SelectContent {
+  background-color: rgb(17 24 39 / 0.95) !important;
+  border-color: rgb(250 204 21 / 0.3) !important;
+}
+
+.SelectItem {
+  color: rgb(255 255 255) !important;
+}
+
+.SelectItem:hover,
+.SelectItem:focus {
+  background-color: rgb(250 204 21 / 0.2) !important;
+  color: rgb(255 255 255) !important;
+}
+
+/* Correção para componentes que usam classes data-* */
+[data-state="open"] {
+  background-color: rgb(17 24 39 / 0.95) !important;
+}
+
+/* Estilo global para todos os selects */
+select {
+  background-color: rgb(17 24 39 / 0.6) !important;
+  border-color: rgb(250 204 21 / 0.3) !important;
+  color: rgb(255 255 255) !important;
+}
+
+select option {
+  background-color: rgb(17 24 39) !important;
+  color: rgb(255 255 255) !important;
+}

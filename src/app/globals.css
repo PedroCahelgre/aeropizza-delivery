@@ -120,3 +120,364 @@
     @apply bg-background text-foreground;
   }
 }
+<<<<<<< HEAD
+=======
+
+/* Custom styles for cardapio page */
+@layer components {
+  .aspect-9\/16 {
+    aspect-ratio: 9/16;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Import form dark theme styles */
+@import url('./form-dark-theme.css');
+
+/* Admin contrast styles */
+@layer components {
+  .text-high-contrast { color: #ffffff !important; }
+  .text-medium-contrast { color: #e5e5e5 !important; }
+  .text-muted-contrast { color: #a3a3a3 !important; }
+  .bg-high-contrast { background-color: #0a0a0a !important; }
+  .bg-medium-contrast { background-color: #1a1a1a !important; }
+  .bg-card-contrast { background-color: #262626 !important; }
+  .border-contrast { border-color: #404040 !important; }
+  .hover-contrast:hover { background-color: #333333 !important; color: #ffffff !important; }
+  .input-contrast { 
+    background-color: #1a1a1a !important; 
+    border-color: #404040 !important; 
+    color: #ffffff !important; 
+  }
+  .input-contrast::placeholder { color: #8b8b8b !important; }
+  .input-contrast:focus { 
+    border-color: #fbbf24 !important; 
+    box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2) !important; 
+  }
+  .status-online { color: #10b981 !important; }
+  .status-offline { color: #ef4444 !important; }
+  .status-pending { color: #f59e0b !important; }
+  .scrollbar-contrast::-webkit-scrollbar { width: 8px; }
+  .scrollbar-contrast::-webkit-scrollbar-track { background: #1a1a1a; }
+  .scrollbar-contrast::-webkit-scrollbar-thumb { background: #404040; border-radius: 4px; }
+  .scrollbar-contrast::-webkit-scrollbar-thumb:hover { background: #525252; }
+}
+
+/* Toast styles - Fundo branco e texto preto */
+@layer components {
+  /* Toast principal - Radix */
+  [data-radix-toast] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  [data-radix-toast] [data-radix-toast-title] {
+    color: #000000 !important;
+    font-weight: 700 !important;
+  }
+  
+  [data-radix-toast] [data-radix-toast-description] {
+    color: #374151 !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Botão fechar do toast */
+  [data-radix-toast] [data-radix-toast-close] {
+    color: #6b7280 !important;
+  }
+  
+  [data-radix-toast] [data-radix-toast-close]:hover {
+    color: #000000 !important;
+    background-color: #f3f4f6 !important;
+  }
+  
+  /* Sonner Toast - Sistema alternativo */
+  .sonner {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  .sonner [data-sonner-toast] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  .sonner [data-sonner-toast][data-type="success"] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  .sonner [data-sonner-toast][data-type="error"] {
+    background-color: #ffffff !important;
+    color: #dc2626 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  .sonner [data-sonner-title] {
+    color: #000000 !important;
+    font-weight: 700 !important;
+  }
+  
+  .sonner [data-sonner-description] {
+    color: #374151 !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Toast genéricos - qualquer elemento com classe toast */
+  [class*="toast"] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  [class*="toast"] [class*="title"] {
+    color: #000000 !important;
+    font-weight: 700 !important;
+  }
+  
+  [class*="toast"] [class*="description"] {
+    color: #374151 !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Enhanced Toast customizado */
+  .enhanced-toast,
+  [data-enhanced-toast] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  .enhanced-toast h4,
+  [data-enhanced-toast] h4 {
+    color: #000000 !important;
+    font-weight: 700 !important;
+  }
+  
+  .enhanced-toast p,
+  [data-enhanced-toast] p {
+    color: #374151 !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Override para qualquer toast com cores diferentes */
+  div[class*="bg-green-50"],
+  div[class*="bg-red-50"],
+  div[class*="bg-yellow-50"],
+  div[class*="bg-blue-50"] {
+    background-color: #ffffff !important;
+  }
+  
+  div[class*="border-green-200"],
+  div[class*="border-red-200"],
+  div[class*="border-yellow-200"],
+  div[class*="border-blue-200"] {
+    border-color: #d1d5db !important;
+  }
+  
+  /* Dialog/Modal */
+  [data-radix-dialog] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  [data-radix-dialog] [data-radix-dialog-title] {
+    color: #000000 !important;
+    font-weight: 700 !important;
+  }
+  
+  [data-radix-dialog] [data-radix-dialog-description] {
+    color: #374151 !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Popover */
+  [data-radix-popover] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  [data-radix-popover] [data-radix-popover-content] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  /* Dropdown Menu */
+  [data-radix-dropdown-menu] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  [data-radix-dropdown-menu] [data-radix-dropdown-menu-item] {
+    color: #000000 !important;
+  }
+  
+  [data-radix-dropdown-menu] [data-radix-dropdown-menu-item]:hover {
+    background-color: #f3f4f6 !important;
+    color: #000000 !important;
+  }
+  
+  /* Tooltip */
+  [data-radix-tooltip] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  /* Select */
+  [data-radix-select] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  [data-radix-select] [data-radix-select-content] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  [data-radix-select] [data-radix-select-item] {
+    color: #000000 !important;
+  }
+  
+  [data-radix-select] [data-radix-select-item]:hover {
+    background-color: #f3f4f6 !important;
+    color: #000000 !important;
+  }
+  
+  /* Alert Dialog */
+  [data-radix-alert-dialog] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  [data-radix-alert-dialog] [data-radix-alert-dialog-title] {
+    color: #000000 !important;
+    font-weight: 700 !important;
+  }
+  
+  [data-radix-alert-dialog] [data-radix-alert-dialog-description] {
+    color: #374151 !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Hover states genéricos para todos os popups */
+  [data-radix-toast][data-state="open"] {
+    animation: slide-in 150ms ease-out;
+  }
+  
+  [data-radix-toast][data-state="closed"] {
+    animation: slide-out 100ms ease-in;
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-out {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+}
+
+/* Estilo Universal para FORÇAR todos os popups */
+@layer utilities {
+  /* Forçar qualquer elemento fixo/absolute/flutuante */
+  div[style*="position: fixed"],
+  div[style*="position: absolute"],
+  div.fixed,
+  div.absolute {
+    /* Se for um popup ou notificação */
+  }
+  
+  div[style*="position: fixed"][class*="toast"],
+  div[style*="position: absolute"][class*="toast"],
+  div.fixed[class*="toast"],
+  div.absolute[class*="toast"] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  /* Forçar qualquer elemento com z-index alto */
+  div[style*="z-index"],
+  div[class*="z-50"],
+  div[class*="z-40"] {
+    /* Se tiver texto */
+  }
+  
+  div[style*="z-index"]:has(h4),
+  div[style*="z-index"]:has(h3),
+  div[style*="z-index"]:has(h2),
+  div[style*="z-index"]:has(h1),
+  div[class*="z-50"]:has(h4),
+  div[class*="z-50"]:has(h3),
+  div[class*="z-50"]:has(h2),
+  div[class*="z-50"]:has(h1),
+  div[class*="z-40"]:has(h4),
+  div[class*="z-40"]:has(h3),
+  div[class*="z-40"]:has(h2),
+  div[class*="z-40"]:has(h1) {
+    background-color: #ffffff !important;
+  }
+  
+  div[style*="z-index"] h4,
+  div[style*="z-index"] h3,
+  div[style*="z-index"] h2,
+  div[style*="z-index"] h1,
+  div[class*="z-50"] h4,
+  div[class*="z-50"] h3,
+  div[class*="z-50"] h2,
+  div[class*="z-50"] h1,
+  div[class*="z-40"] h4,
+  div[class*="z-40"] h3,
+  div[class*="z-40"] h2,
+  div[class*="z-40"] h1 {
+    color: #000000 !important;
+  }
+  
+  /* Forçar qualquer elemento no topo direito */
+  div[class*="top-4"][class*="right-4"],
+  div[class*="top-2"][class*="right-2"] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+}
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5

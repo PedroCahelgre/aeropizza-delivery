@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+<<<<<<< HEAD
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
@@ -18,6 +19,22 @@ const nextConfig: NextConfig = {
   },
   eslint: {
     // 构建时忽略ESLint错误
+=======
+  // Remove static export for custom server compatibility
+  // output: 'export', // Commented out for custom server
+  
+  // Configurações de imagem
+  images: {
+    unoptimized: true,
+  },
+  
+  // TypeScript e ESLint
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  reactStrictMode: false,
+  eslint: {
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
     ignoreDuringBuilds: true,
   },
 };

@@ -1,6 +1,9 @@
 // Hook para usar dados do banco de dados
 import { useState, useEffect } from 'react'
+<<<<<<< HEAD
 import { getStaticProducts, getStaticCategories, getStaticPixConfig } from '@/lib/static-utils'
+=======
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
 export function useStaticProducts() {
   const [products, setProducts] = useState([])
@@ -10,18 +13,30 @@ export function useStaticProducts() {
     // Buscar produtos do banco de dados
     const fetchProducts = async () => {
       try {
+<<<<<<< HEAD
         const response = await fetch('/api/db-products')
+=======
+        const response = await fetch('/api/products-db')
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
         if (response.ok) {
           const data = await response.json()
           setProducts(data)
         } else {
           // Fallback para dados estáticos em caso de erro
+<<<<<<< HEAD
+=======
+          const { getStaticProducts } = await import('@/lib/static-utils')
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
           const staticProducts = getStaticProducts()
           setProducts(staticProducts)
         }
       } catch (error) {
         console.error('Erro ao carregar produtos:', error)
         // Fallback para dados estáticos
+<<<<<<< HEAD
+=======
+        const { getStaticProducts } = await import('@/lib/static-utils')
+>>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
         const staticProducts = getStaticProducts()
         setProducts(staticProducts)
       } finally {
