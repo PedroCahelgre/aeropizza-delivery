@@ -120,8 +120,7 @@
     @apply bg-background text-foreground;
   }
 }
-<<<<<<< HEAD
-=======
+
 
 /* Custom styles for cardapio page */
 @layer components {
@@ -480,4 +479,3 @@
     color: #000000 !important;
   }
 }
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5

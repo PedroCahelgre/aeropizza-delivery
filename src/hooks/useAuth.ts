@@ -43,6 +43,7 @@ export function useAuth() {
   const logout = () => {
     setAdmin(null)
     localStorage.removeItem('admin')
+    fetch('/api/auth/logout', { method: 'POST' }).catch(() => {})
   }
 
   const isMasterAdmin = () => {

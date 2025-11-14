@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
+import { getAdminFromRequest } from '@/lib/auth';
 import ZAI from 'z-ai-web-dev-sdk';
 
 export async function POST(
@@ -7,6 +8,8 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const auth = getAdminFromRequest(request)
+    if (!auth) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     const { id } = await params
     const body = await request.json()
     const { message, customMessage } = body

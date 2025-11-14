@@ -5,8 +5,7 @@ export async function GET() {
   try {
     await db.$connect()
     
-    const products = await db.product.findMany({
-<<<<<<< HEAD
+  const products = await db.product.findMany({
       where: { available: true },
       include: {
         category: true
@@ -17,7 +16,6 @@ export async function GET() {
     })
     
     return NextResponse.json(products)
-=======
       select: {
         id: true,
         name: true,
@@ -25,11 +23,6 @@ export async function GET() {
       }
     })
     
-    return NextResponse.json({ 
-      products: products,
-      count: products.length
-    })
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   } catch (error) {
     console.error('Error:', error)
     return NextResponse.json({ 

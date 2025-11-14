@@ -21,17 +21,30 @@ export function FloatingCart({ className = '' }: FloatingCartProps) {
   const router = useRouter()
 
   const handleCheckout = () => {
+    console.log('🔄 [CART] Iniciando checkout...', { items: cart.length });
+    
     if (cart.length === 0) {
+      console.warn('⚠️ [CART] Carrinho vazio');
       toast({
         title: "Carrinho vazio",
-        description: "Adicione itens ao carrinho para finalizar o pedido",
+        description: "Adicione itens ao carrinho primeiro",
         variant: "destructive"
-      })
-      return
+      });
+      return;
     }
-
-    // Redirecionar para página de agendamento
-    router.push('/agendar')
+    
+    try {
+      console.log('🔄 [CART] Navegando para /agendar');
+      router.push('/agendar');
+      setIsOpen(false);
+    } catch (error) {
+      console.error('❌ [CART] Erro ao navegar:', error);
+      toast({
+        title: "Erro",
+        description: "Erro ao prosseguir. Tente novamente.",
+        variant: "destructive"
+      });
+    }
   }
 
   const itemCount = getCartCount()

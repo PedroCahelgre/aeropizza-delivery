@@ -3,11 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-<<<<<<< HEAD
-import { ShoppingCart, Calendar, Menu, X, Phone } from 'lucide-react'
-=======
 import { ShoppingCart, Calendar, Menu, X, Phone, Settings } from 'lucide-react'
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 import Link from 'next/link'
 
 export default function Navbar() {
@@ -91,8 +87,6 @@ export default function Navbar() {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-2">
-<<<<<<< HEAD
-=======
             {/* Admin Button - Only visible on desktop */}
             <Link href="/admin" className="hidden md:flex">
               <Button 
@@ -105,7 +99,6 @@ export default function Navbar() {
               </Button>
             </Link>
             
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
             {/* Status Badge - Desktop */}
             <div className="hidden md:flex items-center space-x-1.5 px-3 py-1 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 rounded-full border border-yellow-500/30 backdrop-blur-sm">
               <div className={`w-1.5 h-1.5 rounded-full ${mounted && isOpen ? 'bg-yellow-500 animate-pulse shadow-lg shadow-yellow-500/50' : 'bg-red-600'} shadow-sm`}></div>
@@ -114,8 +107,6 @@ export default function Navbar() {
               </span>
             </div>
             
-<<<<<<< HEAD
-=======
             {/* Cart Button */}
             <Button 
               variant="ghost" 
@@ -130,7 +121,6 @@ export default function Navbar() {
               )}
             </Button>
             
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
             {/* Schedule Button */}
             <Link href="/agendar">
               <Button 
@@ -181,8 +171,6 @@ export default function Navbar() {
               
               {/* Mobile Status & Contact */}
               <div className="pt-2 mt-2 border-t border-yellow-500/20 space-y-1">
-<<<<<<< HEAD
-=======
                 {/* Mobile Admin Button */}
                 <Link 
                   href="/admin" 
@@ -193,7 +181,6 @@ export default function Navbar() {
                   <span className="text-xs font-black text-yellow-600">Admin</span>
                 </Link>
                 
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
                 <div className="flex items-center justify-between px-3 py-1.5 bg-gradient-to-r from-yellow-500/5 to-yellow-600/5 rounded-md backdrop-blur-sm">
                   <div className="flex items-center space-x-2">
                     <div className={`w-1.5 h-1.5 rounded-full ${isOpen ? 'bg-yellow-500 shadow-lg shadow-yellow-500/50' : 'bg-red-600'}`}></div>

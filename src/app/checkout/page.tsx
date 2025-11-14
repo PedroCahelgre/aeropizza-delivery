@@ -19,7 +19,15 @@ export default function CheckoutPage() {
   const { cart, updateQuantity, removeFromCart, clearCart, getTotalPrice, getCartCount } = useCart()
   const { toast } = useToast()
   
-  const [orderData, setOrderData] = useState({
+  const [orderData, setOrderData] = useState<{
+    customerName: string
+    customerPhone: string
+    customerEmail: string
+    deliveryAddress: string
+    deliveryType: 'DELIVERY' | 'PICKUP'
+    paymentMethod: 'CASH' | 'PIX' | 'CREDIT_CARD'
+    notes: string
+  }>({
     customerName: '',
     customerPhone: '',
     customerEmail: '',
@@ -51,7 +59,6 @@ export default function CheckoutPage() {
           router.push('/agendar')
         } else {
           console.log('✅ Carrinho tem itens:', parsedCart.length)
-<<<<<<< HEAD
           
           // Validate product IDs - ensure they are proper database IDs
           const validCart = parsedCart.filter((item: any) => {
@@ -84,10 +91,8 @@ export default function CheckoutPage() {
               })
             }
           }
-=======
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
         }
-      } catch (error) {
+    } catch (error) {
         console.error('❌ Erro ao parsear carrinho:', error)
         router.push('/agendar')
       }
@@ -152,10 +157,7 @@ export default function CheckoutPage() {
       }
 
       const user = await userResponse.json()
-<<<<<<< HEAD
       console.log('👤 Usuário criado/encontrado:', user)
-=======
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
       // Criar pedido
       const orderPayload = {
@@ -173,11 +175,7 @@ export default function CheckoutPage() {
         notes: orderData.notes
       }
 
-<<<<<<< HEAD
       console.log('📦 Enviando pedido:', JSON.stringify(orderPayload, null, 2))
-
-=======
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
       const orderResponse = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -190,7 +188,7 @@ export default function CheckoutPage() {
 
       const order = await orderResponse.json()
 
-      // Enviar para WhatsApp
+      // Enviar para WhatsApp - SOLUÇÃO ROBUSTA E GARANTIDA
       const phoneNumber = '5512992515171'
       const totalPrice = getTotalPrice(orderData.deliveryType)
       
@@ -237,17 +235,29 @@ export default function CheckoutPage() {
       
       const encodedMessage = encodeURIComponent(message)
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
       
-      // Limpar carrinho e redirecionar
+      console.log('📱 URL do WhatsApp gerada:', whatsappUrl)
+      
+      // Salvar dados do pedido no sessionStorage para a página de confirmação
+      sessionStorage.setItem('whatsapp_redirect', JSON.stringify({
+        url: whatsappUrl,
+        orderNumber: order.orderNumber,
+        total: totalPrice.toFixed(2),
+        payment: orderData.paymentMethod,
+        timestamp: Date.now()
+      }))
+      
+      // Limpar carrinho
       clearCart()
       
       toast({
         title: "Pedido realizado com sucesso!",
-        description: `Pedido #${order.orderNumber} enviado para WhatsApp`,
+        description: `Pedido #${order.orderNumber} criado. Redirecionando para confirmação...`,
+        duration: 3000
       })
       
-      // Redirecionar para página de confirmação
+      // Redirecionar IMEDIATAMENTE para página de confirmação
+      // A página de confirmação fará o redirecionamento para o WhatsApp
       router.push(`/order-confirmation?order=${order.orderNumber}&total=${totalPrice.toFixed(2)}&payment=${orderData.paymentMethod}`)
       
     } catch (error) {
@@ -424,7 +434,7 @@ export default function CheckoutPage() {
                     <Label>Tipo de Entrega</Label>
                     <RadioGroup
                       value={orderData.deliveryType}
-                      onValueChange={(value) => setOrderData({...orderData, deliveryType: value})}
+                      onValueChange={(value) => setOrderData({...orderData, deliveryType: value as 'DELIVERY' | 'PICKUP'})}
                       className="mt-2"
                     >
                       <div className="flex items-center space-x-2">
@@ -461,7 +471,7 @@ export default function CheckoutPage() {
                     <Label>Forma de Pagamento</Label>
                     <RadioGroup
                       value={orderData.paymentMethod}
-                      onValueChange={(value) => setOrderData({...orderData, paymentMethod: value})}
+                      onValueChange={(value) => setOrderData({...orderData, paymentMethod: value as 'CASH' | 'PIX' | 'CREDIT_CARD'})}
                       className="mt-2"
                     >
                       <div className="flex items-center space-x-2">

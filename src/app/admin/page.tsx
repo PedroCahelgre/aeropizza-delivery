@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/hooks/useAuth'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -72,10 +74,7 @@ import {
   BarChart
 } from 'lucide-react'
 import OrderStatusManager from '@/components/OrderStatusManager'
-<<<<<<< HEAD
 import OrderManagement from '@/components/admin/OrderManagement'
-=======
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
 import SoundControl from '@/components/admin/SoundControl'
 import CustomerManagement from '@/components/admin/CustomerManagementEnhanced'
@@ -91,17 +90,27 @@ import AdvancedReports from '@/components/admin/AdvancedReports'
 import AdminManagement from '@/components/admin/AdminManagement'
 
 export default function AdminPage() {
+  const { admin, loading } = useAuth()
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState('dashboard')
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [notifications, setNotifications] = useState(3)
   const [currentTime, setCurrentTime] = useState(new Date())
-  const [user] = useState({
+
+  // Verificação de autenticação
+  useEffect(() => {
+    if (!loading && !admin) {
+      router.push('/login-admin')
+    }
+  }, [admin, loading, router])
+
+  const user = admin || {
     name: 'Administrador',
     email: 'admin@aeropizza.com',
     role: 'Super Admin',
     avatar: '/images/admin-avatar.jpg'
-  })
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -137,6 +146,25 @@ export default function AdminPage() {
     { id: 3, type: 'payment', message: 'Pagamento confirmado', time: '8 min atrás', icon: CreditCard, color: 'text-purple-500' },
     { id: 4, type: 'delivery', message: 'Pedido entregue', time: '15 min atrás', icon: Truck, color: 'text-orange-500' }
   ]
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-950 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+            <Store className="w-8 h-8 text-black" />
+          </div>
+          <p className="text-white text-lg">Carregando...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Redirect if not authenticated
+  if (!admin) {
+    return null
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-950">
@@ -405,62 +433,7 @@ export default function AdminPage() {
               </TabsContent>
 
               <TabsContent value="orders" className="space-y-6">
-<<<<<<< HEAD
                 <OrderManagement />
-=======
-                {/* Estatísticas de Pedidos */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <Card className="bg-gray-900/60 border-gray-700 text-white">
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm text-gray-400">Pendentes</p>
-                          <p className="text-2xl font-bold text-yellow-500">3</p>
-                        </div>
-                        <Clock className="w-8 h-8 text-yellow-500" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-gray-900/60 border-gray-700 text-white">
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm text-gray-400">Confirmados</p>
-                          <p className="text-2xl font-bold text-blue-500">5</p>
-                        </div>
-                        <CheckCircle className="w-8 h-8 text-blue-500" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-gray-900/60 border-gray-700 text-white">
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm text-gray-400">Em Entrega</p>
-                          <p className="text-2xl font-bold text-purple-500">2</p>
-                        </div>
-                        <Truck className="w-8 h-8 text-purple-500" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-gray-900/60 border-gray-700 text-white">
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm text-gray-400">Entregues</p>
-                          <p className="text-2xl font-bold text-green-500">12</p>
-                        </div>
-                        <Package className="w-8 h-8 text-green-500" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-                
-                <OrderStatusManager />
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
               </TabsContent>
 
               <TabsContent value="customers" className="space-y-6">

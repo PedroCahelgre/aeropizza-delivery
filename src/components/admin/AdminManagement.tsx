@@ -62,10 +62,15 @@ export default function AdminManagement() {
   const { isMasterAdmin, admin: currentAdmin } = useAuth()
 
   useEffect(() => {
-    if (isMasterAdmin()) {
+    if (currentAdmin && currentAdmin.email === 'comerciochalegre@gmail.com') {
       fetchAdmins()
+    } else if (currentAdmin && currentAdmin.email !== 'comerciochalegre@gmail.com') {
+      // Se não for master admin, ainda assim pare o loading
+      setLoading(false)
+    } else if (!currentAdmin) {
+      setLoading(false)
     }
-  }, [])
+  }, [currentAdmin])
 
   const fetchAdmins = async () => {
     try {

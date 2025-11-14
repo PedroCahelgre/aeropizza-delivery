@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
+import { getAdminFromRequest } from '@/lib/auth'
 
 // GET /api/admin/products - List all products for admin
 export async function GET(request: NextRequest) {
   try {
+    const auth = getAdminFromRequest(request)
+    if (!auth) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     const { searchParams } = new URL(request.url)
     const categoryId = searchParams.get('categoryId')
     const available = searchParams.get('available')

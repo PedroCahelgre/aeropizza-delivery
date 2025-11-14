@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-=======
-// prisma/schema.prisma - PostgreSQL para Neon Database
-
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-<<<<<<< HEAD
-=======
-// Schema para pizzaria AeroPizza
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
@@ -25,14 +16,8 @@ model User {
   role      UserRole @default(CLIENT)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-<<<<<<< HEAD
-  admin     Admin?
-  orders    Order[]
-=======
-
   orders    Order[]
   admin     Admin?
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
   @@map("users")
 }
@@ -52,15 +37,6 @@ model Admin {
 }
 
 model Category {
-<<<<<<< HEAD
-  id          String    @id @default(cuid())
-  name        String    @unique
-  description String?
-  image       String?
-  active      Boolean   @default(true)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-=======
   id          String   @id @default(cuid())
   name        String   @unique
   description String?
@@ -68,60 +44,31 @@ model Category {
   active      Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   products    Product[]
 
   @@map("categories")
 }
 
 model Product {
-<<<<<<< HEAD
-  id              String      @id @default(cuid())
-=======
   id              String   @id @default(cuid())
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   name            String
   description     String?
   price           Float
   image           String?
-<<<<<<< HEAD
-  categoryId      String
-  available       Boolean     @default(true)
-  preparationTime Int         @default(15)
-  ingredients     String?
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
-  orderItems      OrderItem[]
-  category        Category    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-=======
   category        Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId      String
   available       Boolean  @default(true)
-  preparationTime Int      @default(15) // minutos
+  preparationTime Int      @default(15)
   ingredients     String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
   orderItems      OrderItem[]
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
   @@map("products")
 }
 
 model Order {
-<<<<<<< HEAD
-  id              String                @id @default(cuid())
-  orderNumber     String                @unique
-  userId          String
-  status          OrderStatus           @default(PENDING)
-  paymentStatus   PaymentStatus         @default(PENDING)
-  paymentMethod   PaymentMethod?
-  deliveryType    DeliveryType          @default(DELIVERY)
-  totalAmount     Float
-  deliveryFee     Float                 @default(0)
-  discountAmount  Float                 @default(0)
-=======
   id              String        @id @default(cuid())
   orderNumber     String        @unique
   user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -133,85 +80,52 @@ model Order {
   totalAmount     Float
   deliveryFee     Float         @default(0)
   discountAmount  Float         @default(0)
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   finalAmount     Float
   scheduledFor    DateTime?
   deliveryAddress String?
   customerPhone   String?
   notes           String?
-<<<<<<< HEAD
-  createdAt       DateTime              @default(now())
-  updatedAt       DateTime              @updatedAt
-  notifications   NotificationHistory[]
-  items           OrderItem[]
-  statusHistory   OrderStatusHistory[]
-  user            User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
-=======
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 
   items           OrderItem[]
   statusHistory   OrderStatusHistory[]
   notifications   NotificationHistory[]
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
   @@map("orders")
 }
 
 model OrderItem {
   id         String  @id @default(cuid())
-<<<<<<< HEAD
-  orderId    String
-=======
   order      Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId    String
   product    Product @relation(fields: [productId], references: [id])
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   productId  String
   quantity   Int
   unitPrice  Float
   totalPrice Float
   notes      String?
-<<<<<<< HEAD
-  product    Product @relation(fields: [productId], references: [id])
-  order      Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
-=======
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
   @@map("order_items")
 }
 
 model OrderStatusHistory {
   id        String      @id @default(cuid())
-<<<<<<< HEAD
-=======
   order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   orderId   String
   status    OrderStatus
   notes     String?
   createdAt DateTime    @default(now())
-<<<<<<< HEAD
-  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
-=======
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
   @@map("order_status_history")
 }
 
 model PixConfig {
   id        String   @id @default(cuid())
-<<<<<<< HEAD
   key       String   @unique
   pixKey    String
   pixType   String
   recipient String
-=======
-  key       String   @unique // "aeropizza_pix"
-  pixKey    String   // chave PIX
-  pixType   String   // "cpf", "cnpj", "email", "telefone", "aleatoria"
-  recipient String   // nome do destinatário
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
   active    Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -221,35 +135,20 @@ model PixConfig {
 
 model NotificationHistory {
   id        String           @id @default(cuid())
-<<<<<<< HEAD
-  orderId   String
-  status    String
-  type      NotificationType
-  recipient String
-=======
   order     Order            @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId   String
   status    String
   type      NotificationType
-  recipient String           // telefone, email, etc.
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
+  recipient String
   message   String
   sent      Boolean          @default(false)
   sentAt    DateTime?
   error     String?
   createdAt DateTime         @default(now())
-<<<<<<< HEAD
-  order     Order            @relation(fields: [orderId], references: [id], onDelete: Cascade)
-=======
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
   @@map("notification_history")
 }
 
-<<<<<<< HEAD
-=======
-// Enums
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 enum UserRole {
   CLIENT
   ADMIN
@@ -295,8 +194,4 @@ enum NotificationType {
   SMS
   EMAIL
   PUSH
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5

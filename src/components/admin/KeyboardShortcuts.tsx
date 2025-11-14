@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useCallback } from 'react';
-import { toast } from '@/components/ui/toast';
+import { toast } from '@/hooks/use-toast';
 
 interface KeyboardShortcutsProps {
   onRefresh?: () => void;
@@ -27,7 +27,7 @@ export default function KeyboardShortcuts({
     if ((event.ctrlKey || event.metaKey) && event.key === 'r') {
       event.preventDefault();
       onRefresh?.();
-      toast.info('Lista de pedidos atualizada');
+      toast({ title: 'Lista de pedidos atualizada' });
     }
 
     // Ctrl/Cmd + B: Atualização em lote
@@ -57,7 +57,7 @@ export default function KeyboardShortcuts({
     if (event.key === 'F5' && !event.ctrlKey && !event.metaKey) {
       event.preventDefault();
       onRefresh?.();
-      toast.info('Lista de pedidos atualizada');
+      toast({ title: 'Lista de pedidos atualizada' });
     }
 
     // Esc: Limpar seleção
@@ -67,7 +67,7 @@ export default function KeyboardShortcuts({
       checkboxes.forEach(checkbox => {
         (checkbox as HTMLInputElement).checked = false;
       });
-      toast.info('Seleção limpa');
+      toast({ title: 'Seleção limpa' });
     }
   }, [onRefresh, onBatchUpdate, onSelectAll, onSearch]);
 

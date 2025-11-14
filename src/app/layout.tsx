@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-<<<<<<< HEAD
-=======
 import SimpleInstallPopup from "@/components/SimpleInstallPopup";
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,20 +15,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
-  icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
-  },
-  openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
-=======
   title: "AeroPizza - Sabor que voa até sua casa!",
   description: "As melhores pizzas delivery da região. Peça online e receba em 30-40 minutos. Qualidade que voa até você!",
   keywords: ["AeroPizza", "Pizza", "Delivery", "Comida", "Pizzaria", "Pedido Online"],
@@ -65,16 +48,10 @@ export const metadata: Metadata = {
     description: "As melhores pizzas delivery da região. Peça online e receba em 30-40 minutos.",
     url: "https://aeropizza.example.com",
     siteName: "AeroPizza",
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-<<<<<<< HEAD
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-  },
-=======
     title: "AeroPizza - Sabor que voa até sua casa!",
     description: "As melhores pizzas delivery da região. Peça online e receba em 30-40 minutos.",
   },
@@ -82,7 +59,6 @@ export const metadata: Metadata = {
     "msapplication-TileColor": "#000000",
     "msapplication-config": "/browserconfig.xml"
   }
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
 };
 
 export default function RootLayout({
@@ -91,9 +67,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<<<<<<< HEAD
-    <html lang="en" suppressHydrationWarning>
-=======
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#eab308" />
@@ -109,17 +82,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-192.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
+ 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
         suppressHydrationWarning
       >
-<<<<<<< HEAD
-        <div suppressHydrationWarning>
-          {children}
-          <Toaster />
-        </div>
-=======
         {children}
         <Toaster />
         <SimpleInstallPopup />
@@ -140,7 +107,7 @@ export default function RootLayout({
             `,
           }}
         />
->>>>>>> ada758044931ecc5e181e0bf6f77781c2d51acb5
+
       </body>
     </html>
   );
