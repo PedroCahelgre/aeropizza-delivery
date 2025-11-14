@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run build:static"
   publish = "out"
   base = "/"
 
@@ -63,18 +63,7 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Compressão
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "gzip"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "gzip"
+# Compressão (removido para permitir que a Netlify gerencie o Gzip)
 
 # Páginas HTML
 [[headers]]

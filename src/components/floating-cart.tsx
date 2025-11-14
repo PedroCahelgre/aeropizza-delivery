@@ -34,8 +34,8 @@ export function FloatingCart({ className = '' }: FloatingCartProps) {
     }
     
     try {
-      console.log('🔄 [CART] Navegando para /agendar');
-      router.push('/agendar');
+      console.log('🔄 [CART] Navegando para /checkout');
+      router.push('/checkout');
       setIsOpen(false);
     } catch (error) {
       console.error('❌ [CART] Erro ao navegar:', error);

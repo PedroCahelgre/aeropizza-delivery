@@ -62,7 +62,7 @@ export default function CheckoutPage() {
           
           // Validate product IDs - ensure they are proper database IDs
           const validCart = parsedCart.filter((item: any) => {
-            const isValidId = typeof item.id === 'string' && item.id.length > 10
+            const isValidId = typeof item.id === 'string' && item.id.length > 0
             if (!isValidId) {
               // Silently remove invalid items without console spam
             }
@@ -140,60 +140,15 @@ export default function CheckoutPage() {
     setSubmitting(true)
 
     try {
-      // Criar usuário
-      const userResponse = await fetch('/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: orderData.customerName,
-          email: orderData.customerEmail || `cliente_${Date.now()}@temp.com`,
-          phone: orderData.customerPhone,
-          address: orderData.deliveryAddress
-        })
-      })
-
-      if (!userResponse.ok) {
-        throw new Error('Erro ao criar usuário')
-      }
-
-      const user = await userResponse.json()
-      console.log('👤 Usuário criado/encontrado:', user)
-
-      // Criar pedido
-      const orderPayload = {
-        userId: user.id,
-        items: cart.map(item => ({
-          productId: item.id,
-          quantity: item.quantity,
-          unitPrice: item.price,
-          notes: item.notes || ''
-        })),
-        deliveryType: orderData.deliveryType,
-        paymentMethod: orderData.paymentMethod,
-        deliveryAddress: orderData.deliveryAddress,
-        customerPhone: orderData.customerPhone,
-        notes: orderData.notes
-      }
-
-      console.log('📦 Enviando pedido:', JSON.stringify(orderPayload, null, 2))
-      const orderResponse = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(orderPayload)
-      })
-
-      if (!orderResponse.ok) {
-        throw new Error('Erro ao criar pedido')
-      }
-
-      const order = await orderResponse.json()
+      // Gerar número de pedido no cliente para modo estático
+      const orderNumber = `AERO-${Date.now().toString().slice(-6)}`
 
       // Enviar para WhatsApp - SOLUÇÃO ROBUSTA E GARANTIDA
       const phoneNumber = '5512992515171'
       const totalPrice = getTotalPrice(orderData.deliveryType)
       
       let message = `*🍕 NOVO PEDIDO - AERO PIZZA*\n\n`
-      message += `*📋 Nº do Pedido:* ${order.orderNumber}\n`
+      message += `*📋 Nº do Pedido:* ${orderNumber}\n`
       message += `*📅 Data:* ${new Date().toLocaleDateString('pt-BR')}\n`
       message += `*🕒 Horário:* ${new Date().toLocaleTimeString('pt-BR')}\n\n`
       message += `*👤 Dados do Cliente:*\n`
@@ -241,7 +196,7 @@ export default function CheckoutPage() {
       // Salvar dados do pedido no sessionStorage para a página de confirmação
       sessionStorage.setItem('whatsapp_redirect', JSON.stringify({
         url: whatsappUrl,
-        orderNumber: order.orderNumber,
+        orderNumber: orderNumber,
         total: totalPrice.toFixed(2),
         payment: orderData.paymentMethod,
         timestamp: Date.now()
@@ -252,13 +207,13 @@ export default function CheckoutPage() {
       
       toast({
         title: "Pedido realizado com sucesso!",
-        description: `Pedido #${order.orderNumber} criado. Redirecionando para confirmação...`,
+        description: `Pedido #${orderNumber} criado. Redirecionando para confirmação...`,
         duration: 3000
       })
       
       // Redirecionar IMEDIATAMENTE para página de confirmação
       // A página de confirmação fará o redirecionamento para o WhatsApp
-      router.push(`/order-confirmation?order=${order.orderNumber}&total=${totalPrice.toFixed(2)}&payment=${orderData.paymentMethod}`)
+      router.push(`/order-confirmation?order=${orderNumber}&total=${totalPrice.toFixed(2)}&payment=${orderData.paymentMethod}`)
       
     } catch (error) {
       console.error('Erro ao fazer pedido:', error)

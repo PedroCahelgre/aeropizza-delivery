@@ -17,8 +17,11 @@ export default function SimpleInstallPopup() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const [showPopup, setShowPopup] = useState(false)
   const [showInstructions, setShowInstructions] = useState(false)
+  const [browserInfo, setBrowserInfo] = useState<ReturnType<typeof getBrowserInstructions> | null>(null)
 
   useEffect(() => {
+    const info = getBrowserInstructions()
+    setBrowserInfo(info)
     // Verificar se já foi dispensado
     const wasDismissed = localStorage.getItem('install-popup-dismissed')
     if (wasDismissed) {
@@ -121,9 +124,7 @@ export default function SimpleInstallPopup() {
     }
   }
 
-  const browserInfo = getBrowserInstructions()
-
-  if (!showPopup) return null
+  if (!showPopup || !browserInfo) return null
 
   if (showInstructions) {
     return (
