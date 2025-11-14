@@ -135,12 +135,12 @@ export default function QuickActions({ onQuickAdd }: QuickActionsProps) {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
     const message = `🍕 Meu carrinho Aero Pizza:\n\n${cartText}\n\nTotal: R$ ${total.toFixed(2)}`
     
-    if (navigator.share) {
+    if (typeof navigator !== 'undefined' && navigator.share) {
       navigator.share({
         title: 'Meu Carrinho Aero Pizza',
         text: message
       })
-    } else {
+    } else if (typeof navigator !== 'undefined') {
       navigator.clipboard.writeText(message)
       toast({
         title: "📋 Carrinho copiado!",

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -19,6 +19,14 @@ export default function TestWhatsAppPage() {
     urlGenerated: false,
     error: null
   })
+  const [debugInfo, setDebugInfo] = useState({ userAgent: '', vendor: '' })
+
+  useEffect(() => {
+    setDebugInfo({
+      userAgent: navigator.userAgent,
+      vendor: navigator.vendor,
+    })
+  }, [])
 
   const testWhatsAppRedirect = () => {
     try {
@@ -160,8 +168,8 @@ export default function TestWhatsAppPage() {
           </CardHeader>
           <CardContent>
             <div className="bg-gray-100 p-4 rounded-lg text-sm font-mono">
-              <div><strong>User Agent:</strong> {typeof navigator !== 'undefined' ? navigator.userAgent : 'Não disponível'}</div>
-              <div><strong>Navegador:</strong> {typeof navigator !== 'undefined' ? navigator.vendor : 'Não disponível'}</div>
+              <div><strong>User Agent:</strong> {debugInfo.userAgent || 'Não disponível'}</div>
+              <div><strong>Navegador:</strong> {debugInfo.vendor || 'Não disponível'}</div>
               <div><strong>Popup Window:</strong> {typeof window !== 'undefined' && typeof window.open !== 'undefined' ? 'Suportado' : 'Não suportado'}</div>
             </div>
           </CardContent>
